@@ -20,4 +20,4 @@ vpc_security_group_ids = [aws_security_group.DB-test.id]
 }
 
 
-# mysql -u hossam -h terraform-20220416141725394600000001.cwafwsygys25.eu-central-1.rds.amazonaws.com -p202997hH7
+
