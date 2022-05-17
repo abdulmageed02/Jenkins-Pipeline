@@ -1,0 +1,13 @@
+  - name: Playbook
+    hosts: host
+    become: yes
+    become_user: root
+    tasks:
+      - name: install docker
+        apt:
+          name: docker.io
+          state: present
+      - name:  install open-jdk
+        apt:
+          name: default-jdk-headless
+          state: present
