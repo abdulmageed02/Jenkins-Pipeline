@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket         = "terraform-backend-iti2"
+    bucket         = "bu-jenkins-cket"
     key            = "myfile.stfile"
     region         = "us-west-2"
     dynamodb_table = "statfile"
