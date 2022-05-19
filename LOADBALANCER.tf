@@ -2,7 +2,7 @@ resource "aws_lb_target_group" "NLB_target_group" {
   name        = "NLB-TG"
   port        = 3000
   protocol    = "TCP"
-  target_id = aws_instance.private-EC2.id
+  # target_id = aws_instance.private-EC2.id
   vpc_id      = module.network.vpc_id
   }
 
