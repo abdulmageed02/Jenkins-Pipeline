@@ -18,7 +18,7 @@ resource "aws_lb" "NLB" {
   internal           = false
   load_balancer_type = "network"
 #   security_groups    = [aws_security_group.SG-2.id]
-  subnets            = [module.network.pub2_id ,module.network.pub1_id]
+  subnets            = [module.network.pub2_id , module.network.pub1_id]
 }
 
 resource "aws_lb_listener" "http" {

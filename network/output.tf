@@ -3,7 +3,7 @@ output "pub1_id" {
 }
 
 output "pub2_id" {
-  value       = aws_subnet.pub-1.id
+  value       = aws_subnet.pub-2.id
 }
 
 output "private1_id" {
