@@ -1,4 +1,4 @@
-resource "aws_instance" "pubEC2" {
+resource "aws_instance" "public-EC2" {
   ami                         = var.AMI
   instance_type               = "t2.micro"
   key_name                    = aws_key_pair.public_key_pair.id
@@ -22,7 +22,7 @@ resource "aws_instance" "pubEC2" {
   }
 }
 
-resource "aws_instance" "instance" {
+resource "aws_instance" "private-EC2" {
   ami                         = var.AMI
   instance_type               = "t2.micro"
   key_name                    = aws_key_pair.public_key_pair.id
