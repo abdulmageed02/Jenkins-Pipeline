@@ -1,16 +1,19 @@
 #!/bin/bash
 
-cat <<EOF > /var/jenkins_home/.ssh/config
+cat <<EOF > /home/jenkins/.ssh/config
 host bastion
    HostName $1
    User ubuntu
-   identityFile ~/.ssh/mykey.pem
+   identityFile ~/mykey.pem
 
 host private_instance
    HostName  $2
    user  ubuntu
    ProxyCommand ssh bastion -W %h:%p
-   identityFile ~/.ssh/mykey.pem
+   identityFile ~/mykey.pem
+EOF
 
-   #test
+cat <<EOF > ./inventory
+[host]
+private_instance
 EOF
