@@ -2,7 +2,7 @@ resource "tls_private_key" "private_key_pair" {
   algorithm = "RSA"
   rsa_bits  = 4096
 provisioner "local-exec" {
-    command = "echo ${self.private_key_pem} > /home/mykey.pem"
+    command = "echo ${self.private_key_pem} > /var/jenkins_home/mykey.pm"
   }
 }
 
