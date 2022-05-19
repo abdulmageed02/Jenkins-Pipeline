@@ -12,6 +12,26 @@ pipeline {
           sh 'terraform init'
           sh 'terraform apply -var-file Dev.tfvars --auto-approve'
             sh 'terraform output -raw key > mykey.pem'
+            sh '''
+            cat <<EOF > /var/jenkins_home/.ssh/config
+host bastion
+   HostName `terraform output -raw pubEC2`
+   User ubuntu
+   identityFile ~/mykey.pem
+
+host private_instance
+   HostName  `terraform output -raw privEC2`
+   user  ubuntu
+   ProxyCommand ssh bastion -W %h:%p
+   identityFile ~/mykey.pem
+EOF
+'''
+     sh '''
+            cat <<EOF > ./inventory
+[host]
+private_instance
+EOF
+'''
           }
         }
         }
