@@ -44,7 +44,7 @@ resource "aws_security_group" "SG-2" {
     from_port   = 3000
     to_port     = 3000
     protocol    = "tcp"
-    cidr_blocks = [module.network.vpc_cidr]
+    cidr_blocks = ["0.0.0.0/0"]
 
   }
   egress {
