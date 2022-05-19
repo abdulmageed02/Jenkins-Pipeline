@@ -34,7 +34,7 @@ private_instance
 EOF
 '''
             
-           sh 'ansilbe-playbook -i inventory --private-key mykey.pem playbook.yml'
+           sh 'ansible-playbook -i inventory --private-key mykey.pem playbook.yml'
           }
         }
         }
