@@ -26,5 +26,9 @@ resource "aws_lb_listener" "http" {
   port              = "3000"
   protocol          = "TCP"
   # vpc_id            = module.network.vpc_id
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.NLB_target_group.arn
+  }
 }
 
