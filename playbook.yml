@@ -1,8 +1,14 @@
+
   - name: Playbook
     hosts: host
     become: yes
     become_user: root
     tasks:
+      - name: Update and upgrade apt packages
+        become: true
+        apt:
+          update_cache: yes
+          cache_valid_time: 86400 #One day
       - name: install docker
         apt:
           name: docker.io
