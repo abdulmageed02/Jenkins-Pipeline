@@ -17,3 +17,13 @@
         apt:
           name: default-jdk-headless
           state: present
+        
+      - name: copy jenkins agent file
+        copy:
+        src: agent.jar
+        dest: /home/ubuntu
+
+      - name: copy app env file agent file
+        copy:
+        src: .env
+        dest: /home/ubuntu

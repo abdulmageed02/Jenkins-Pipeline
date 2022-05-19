@@ -39,7 +39,7 @@ EOF
            sh 'ansible-playbook -i inventory --private-key mykey.pem playbook.yml'
 
                sh '''
-            cat <<EOF > ./.env
+            cat <<EOF > . /.env
 RDS_HOSTNAME=`terraform output rds_add `
 RDS_USERNAME='hossam'
 RDS_PASSWORD='202997hH7'
@@ -47,12 +47,7 @@ RDS_PORT=`terraform output rds_port `
 REDIS_HOSTNAME=`terraform output redis_add `
 REDIS_PORT=`terraform output rds_port `
 '''
-         git branch: 'rds_redis', url: 'https://github.com/abdulmageed02/jenkins_nodejs_example.git'
-                sh ' echo $HOSTNAME'
-                sh 'echo $HOME'
-                sh 'docker build . -t node-app'
-                sh 'docker rm -f node-app'
-                sh 'docker run --env-file ../.env -d -p 3000:3000 --name node-app node-app'
+        
 
           }
         }
