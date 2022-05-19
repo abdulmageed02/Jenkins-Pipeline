@@ -17,13 +17,13 @@ pipeline {
 host bastion
    HostName `terraform output -raw pubEC2`
    User ubuntu
-   identityFile ~/mykey.pem
+   identityFile /var/jenkins_home/workspace/Terraform/mykey.pem
 
 host private_instance
    HostName  `terraform output -raw privEC2`
    user  ubuntu
    ProxyCommand ssh bastion -W %h:%p
-   identityFile ~/mykey.pem
+   identityFile /var/jenkins_home/workspace/Terraform/mykey.pem
 EOF
 '''
      sh '''
