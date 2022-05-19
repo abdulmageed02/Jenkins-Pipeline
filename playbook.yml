@@ -20,10 +20,10 @@
         
       - name: copy jenkins agent file
         copy:
-        src: agent.jar
-        dest: /home/ubuntu
+          src: agent.jar
+          dest: /home/ubuntu
 
       - name: copy app env file agent file
         copy:
-        src: .env
-        dest: /home/ubuntu
+          src: .env
+          dest: /home/ubuntu
