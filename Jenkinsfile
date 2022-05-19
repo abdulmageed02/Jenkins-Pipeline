@@ -34,7 +34,7 @@ private_instance
 EOF
 '''
             
-            ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory', playbook: 'playbook.yml'
+           sh 'ansilbe-playbook -i inventory --private-key mykey.pem playbook.yml'
           }
         }
         }
