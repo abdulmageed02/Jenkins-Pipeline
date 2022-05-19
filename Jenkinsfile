@@ -12,7 +12,9 @@ pipeline {
             sh 'echo $HOME'
           sh 'terraform init'
           sh 'terraform apply -var-file Dev.tfvars --auto-approve'
+            sh 'chmod 777 mykey.pem'
             sh 'terraform output -raw key > mykey.pem'
+            sh 'chmod 400 mykey.pem'
             sh '''
             cat <<EOF > /var/jenkins_home/.ssh/config
 host bastion
