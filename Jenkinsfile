@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-        withAWS(credentials: 'AWS_IAM_USER', region: 'us-west-2') {
+        withAWS(credentials: 'AWS_IAM_USER', region: 'us-west-2') { 
             sh 'echo $HOME'
           sh 'terraform init'
           sh 'terraform apply -var-file Dev.tfvars --auto-approve'
