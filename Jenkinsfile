@@ -39,12 +39,12 @@ EOF
            
                sh '''
             cat <<EOF > ./.env
-RDS_HOSTNAME=`terraform output rds_add `
-RDS_USERNAME='hossam'
-RDS_PASSWORD='202997hH7'
-RDS_PORT=`terraform output rds_port `
-REDIS_HOSTNAME=`terraform output redis_add `
-REDIS_PORT=`terraform output rds_port `
+RDS_HOSTNAME=`terraform output -raw rds_add `
+RDS_USERNAME=hossam
+RDS_PASSWORD=202997hH7
+RDS_PORT=`terraform output -raw rds_port `
+REDIS_HOSTNAME=`terraform output -raw redis_add `
+REDIS_PORT=`terraform output -raw rds_port `
 '''
         sh 'ansible-playbook -i inventory --private-key mykey.pem playbook.yml'
 
