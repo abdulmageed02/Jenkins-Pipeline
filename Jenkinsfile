@@ -32,6 +32,8 @@ EOF
 private_instance
 EOF
 '''
+            
+            ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory', playbook: 'playbook.yml'
           }
         }
         }
