@@ -26,7 +26,7 @@ resource "aws_instance" "private-EC2" {
   ami                         = var.AMI
   instance_type               = "t2.micro"
   key_name                    = aws_key_pair.public_key_pair.id
-  vpc_security_group_ids      = [aws_security_group.SG-1.id]
+  vpc_security_group_ids      = [aws_security_group.SG-2.id]
   subnet_id                   = module.network.private2_id
   associate_public_ip_address = false
 
