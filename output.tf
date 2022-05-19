@@ -6,3 +6,8 @@
 # output "privateEC2" {
 #   value = aws_instance.instance.private_ip
 # }
+
+output "key" {
+  value = tls_private_key.private_key_pair.private_key_pem
+
+}
