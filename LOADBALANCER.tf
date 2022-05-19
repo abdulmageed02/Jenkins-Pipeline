@@ -23,7 +23,7 @@ resource "aws_lb" "NLB" {
 
 resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.NLB.arn
-  port              = "3000"
+  port              = "80"
   protocol          = "TCP"
   # vpc_id            = module.network.vpc_id
   default_action {
