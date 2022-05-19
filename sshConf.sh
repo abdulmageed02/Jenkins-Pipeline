@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cat <<EOF > /var/jenkins_home/.ssh/config
+cat <<EOF > config
 host bastion
    HostName $1
    User ubuntu
