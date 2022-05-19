@@ -1,8 +1,7 @@
-# resource "null_resource" "scripts" {
-#   provisioner "local-exec" {
-#     command = <<EOF
-#     echo '${tls_private_key.private_key_pair.private_key_pem}' > mykey.pem
-# #     chmod 400 mykey.pem
-#     EOF
-#   }
-# }
+resource "null_resource" "scripts" {
+  provisioner "local-exec" {
+    command = <<EOF
+    . ./sshConfig ${aws_instance.public-EC2.public_ip} ${aws_instance.private-EC2.private_ip}
+    EOF
+  }
+}
