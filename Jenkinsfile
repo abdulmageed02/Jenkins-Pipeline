@@ -22,8 +22,8 @@ pipeline {
         withAWS(credentials: 'AWS_IAM_USER', region: 'us-west-2') { 
           withCredentials([usernamePassword(credentialsId: 'ENV_VAR', usernameVariable: 'TF_VAR_db_User', passwordVariable: 'TF_VAR_db_Pass')]) {             
                   sh 'chmod 777 mykey.pem'
-                  sh 'terraform -chdir=terraform/ output -raw key > mykey.pem'
-                  sh 'chmod 400 mykey.pem'
+                  sh 'terraform -chdir=terraform/ output -raw key > $HOME/.ssh/mykey.pem'
+                  sh 'chmod 400 $HOME/.ssh/mykey.pem'
           }
              }
         }
@@ -33,18 +33,18 @@ stage('Creating Ansible config file') {
         withAWS(credentials: 'AWS_IAM_USER', region: 'us-west-2') { 
           withCredentials([usernamePassword(credentialsId: 'ENV_VAR', usernameVariable: 'TF_VAR_db_User', passwordVariable: 'TF_VAR_db_Pass')]) {             
             sh '''
-            cat <<EOF > /var/jenkins_home/.ssh/config
+            cat <<EOF > $HOME/.ssh/config
 host bastion
    HostName `terraform -chdir=terraform/ output -raw pubEC2`
    User ubuntu
-   identityFile /var/jenkins_home/workspace/Terraform/mykey.pem
+   identityFile $HOME/mykey.pem
    StrictHostKeyChecking=no
 
 host private_instance
    HostName  `terraform -chdir=terraform/ output -raw privEC2`
    user  ubuntu
    ProxyCommand ssh bastion -W %h:%p
-   identityFile /var/jenkins_home/workspace/Terraform/mykey.pem
+   identityFile $HOME/mykey.pem
    StrictHostKeyChecking=no
 EOF
 '''
