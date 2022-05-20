@@ -36,7 +36,7 @@ infra structure is built on aws with terraform tool and it consists of:
     
     ### then from jenkins console connect the private instance like this:
     ![agent](https://github.com/abdulmageed02/Jenkins-Pipeline-/blob/main/IMAGES/Screenshot%20from%202022-05-20%2023-45-55.png?raw=true)
-    ### now its connected and ready to deploy
+    ### now its connected and ready to host deployments
     ![agent](https://github.com/abdulmageed02/Jenkins-Pipeline-/blob/main/IMAGES/Screenshot%20from%202022-05-20%2023-49-00.png?raw=true)
     ![agent](https://github.com/abdulmageed02/Jenkins-Pipeline-/blob/main/IMAGES/Screenshot%20from%202022-05-20%2023-45-35.png?raw=true)
 
@@ -46,9 +46,9 @@ infra structure is built on aws with terraform tool and it consists of:
 
     * jenkins deploy the app from this [forked repo](https://github.com/abdulmageed02/jenkins_nodejs_example/tree/rds_redis) 
 
-    * the app need Enviroment variables and their values are created by terraform then copied to the private instance using ansible
+    * the app need Enviroment variables and their values are created by `terraform` then copied to the private instance using `ansible`
 
-    * this pipeline is triggered by the completeion of the terraform pipeline
+    * this pipeline is triggered by the completeion of the `terraform pipeline`
 
    * ## you can test the deployment rds connection form  [here](http://nlb-8e3ff1ece94a4ce0.elb.us-west-2.amazonaws.com/db)
 
