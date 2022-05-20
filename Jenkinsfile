@@ -23,12 +23,14 @@ host bastion
    HostName `terraform output -raw pubEC2`
    User ubuntu
    identityFile /var/jenkins_home/workspace/Terraform/mykey.pem
+   StrictHostKeyChecking=no
 
 host private_instance
    HostName  `terraform output -raw privEC2`
    user  ubuntu
    ProxyCommand ssh bastion -W %h:%p
    identityFile /var/jenkins_home/workspace/Terraform/mykey.pem
+   StrictHostKeyChecking=no
 EOF
 '''
      sh '''
