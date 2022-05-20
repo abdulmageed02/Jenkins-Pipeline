@@ -22,8 +22,8 @@ pipeline {
         withAWS(credentials: 'AWS_IAM_USER', region: 'us-west-2') { 
           withCredentials([usernamePassword(credentialsId: 'ENV_VAR', usernameVariable: 'TF_VAR_db_User', passwordVariable: 'TF_VAR_db_Pass')]) {             
                   sh 'chmod 777 mykey.pem'
-                  sh 'terraform -chdir=terraform/ output -raw key > $HOME/.ssh/mykey.pem'
-                  sh 'chmod 400 $HOME/.ssh/mykey.pem'
+                  sh 'terraform -chdir=terraform/ output -raw key > $HOME/mykey.pem'
+                  sh 'chmod 400 $HOME/mykey.pem'
           }
              }
         }
@@ -87,7 +87,7 @@ REDIS_PORT=`terraform -chdir=terraform/ output -raw redis_port `
             steps {
         withAWS(credentials: 'AWS_IAM_USER', region: 'us-west-2') { 
           withCredentials([usernamePassword(credentialsId: 'ENV_VAR', usernameVariable: 'TF_VAR_db_User', passwordVariable: 'TF_VAR_db_Pass')]) {             
-sh 'ansible-playbook -i inventory --private-key $HOME/.ssh/mykey.pem Ansible/playbook.yml'
+sh 'ansible-playbook -i inventory --private-key $HOME/mykey.pem Ansible/playbook.yml'
           }
              }
         }
