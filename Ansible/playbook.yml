@@ -25,7 +25,7 @@
 
       - name: copy env file to slave
         copy:
-          src: .env
+          src: ../.env
           dest: /home/ubuntu
       - name: running docker without sudo  
         user:
