@@ -32,6 +32,6 @@ output "redis_port" {
 
 
 output "app_link" {
-  value = aws_lb_target_group.NLB_target_group.public_ip
+  value = aws_lb.NLB.public_ip
 
 }
