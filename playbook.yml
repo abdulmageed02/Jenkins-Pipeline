@@ -27,7 +27,7 @@
         copy:
           src: .env
           dest: /home/ubuntu
-      - name: running docker without sudo 
+      - name: running docker without sudo  
         user:
           name: "ubuntu"
           groups: docker
