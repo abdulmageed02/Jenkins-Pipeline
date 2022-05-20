@@ -29,3 +29,9 @@ output "redis_port" {
   value = aws_elasticache_cluster.redis.port
 
 }
+
+
+output "app_link" {
+  value = aws_lb_target_group.NLB_target_group.public_ip
+
+}
