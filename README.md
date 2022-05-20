@@ -27,12 +27,14 @@ infra structure is built on aws with terraform tool and it consists of:
 
      config file that ansbile use to reach the private instance from bastion host: 
 
-     ![config file](http://url/to/img.png)
+     ![config file](https://raw.githubusercontent.com/abdulmageed02/Jenkins-Pipeline-/main/IMAGES/Screenshot%20from%202022-05-20%2023-43-18.png)
     
     ### then from jenkins console connect the private instance like this:
-    ![config file](http://url/to/img.png)
+    ![agent](https://github.com/abdulmageed02/Jenkins-Pipeline-/blob/main/IMAGES/Screenshot%20from%202022-05-20%2023-45-55.png?raw=true)
     ### now its connected and ready to deploy
-    ![config file](http://url/to/img.png)
+    ![agent](https://github.com/abdulmageed02/Jenkins-Pipeline-/blob/main/IMAGES/Screenshot%20from%202022-05-20%2023-49-00.png?raw=true)
+    ![agent](https://github.com/abdulmageed02/Jenkins-Pipeline-/blob/main/IMAGES/Screenshot%20from%202022-05-20%2023-45-35.png?raw=true)
+
 
 * ### Node-app Deployment pipeline
     jenkins deploy the app from this [forked repo](https://github.com/abdulmageed02/jenkins_nodejs_example/tree/rds_redis) 
@@ -41,6 +43,6 @@ infra structure is built on aws with terraform tool and it consists of:
 
     this pipeline is triggered by the completeion of the terraform pipeline
 
-  ## `you can test the deployment rds connection form ` [here](http://nlb-8e3ff1ece94a4ce0.elb.us-west-2.amazonaws.com/db)
+   `you can test the deployment rds connection form ` [here](http://nlb-8e3ff1ece94a4ce0.elb.us-west-2.amazonaws.com/db)
 
-  ## `and the redis connecton from `[here](http://nlb-8e3ff1ece94a4ce0.elb.us-west-2.amazonaws.com/redis)
+   `and the redis connecton from `[here](http://nlb-8e3ff1ece94a4ce0.elb.us-west-2.amazonaws.com/redis)
