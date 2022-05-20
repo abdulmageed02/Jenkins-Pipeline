@@ -43,6 +43,6 @@ infra structure is built on aws with terraform tool and it consists of:
 
     this pipeline is triggered by the completeion of the terraform pipeline
 
-   `you can test the deployment rds connection form ` [here](http://nlb-8e3ff1ece94a4ce0.elb.us-west-2.amazonaws.com/db)
+   ## you can test the deployment rds connection form  [here](http://nlb-8e3ff1ece94a4ce0.elb.us-west-2.amazonaws.com/db)
 
-   `and the redis connecton from `[here](http://nlb-8e3ff1ece94a4ce0.elb.us-west-2.amazonaws.com/redis)
+   ## and the redis connecton from [here](http://nlb-8e3ff1ece94a4ce0.elb.us-west-2.amazonaws.com/redis)
