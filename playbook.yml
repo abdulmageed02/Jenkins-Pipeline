@@ -4,7 +4,7 @@
     become: yes
     become_user: root
     tasks:
-      - name: Update and upgrade apt packages
+      - name: Update  apt packages
         become: true
         apt:
           update_cache: yes
@@ -18,16 +18,16 @@
           name: default-jdk-headless
           state: present
         
-      - name: copy jenkins agent file
+      - name: copy jenkins agent.jar to slave
         copy:
           src: agent.jar
           dest: /home/ubuntu
 
-      - name: copy app env file agent file
+      - name: copy env file to slave
         copy:
           src: .env
           dest: /home/ubuntu
-      - name: adding user to group docker
+      - name: running docker without sudo 
         user:
           name: "ubuntu"
           groups: docker
