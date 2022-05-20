@@ -10,9 +10,9 @@ pipeline {
             steps {
         withAWS(credentials: 'AWS_IAM_USER', region: 'us-west-2') { 
             // sh 'echo $HOME'
-          sh 'terraform init'
+          sh 'terraform -chdir=terraform/ init'
           withCredentials([usernamePassword(credentialsId: 'ENV_VAR', usernameVariable: 'TF_VAR_db_User', passwordVariable: 'TF_VAR_db_Pass')]) {
-                            sh "terraform apply --var-file Dev.tfvars -auto-approve"
+                            sh "terraform -chdir=terraform/ apply --var-file Dev.tfvars -auto-approve"
           }
              }
         }
@@ -22,7 +22,7 @@ pipeline {
         withAWS(credentials: 'AWS_IAM_USER', region: 'us-west-2') { 
           withCredentials([usernamePassword(credentialsId: 'ENV_VAR', usernameVariable: 'TF_VAR_db_User', passwordVariable: 'TF_VAR_db_Pass')]) {             
                   sh 'chmod 777 mykey.pem'
-                  sh 'terraform output -raw key > mykey.pem'
+                  sh 'terraform -chdir=terraform/ output -raw key > mykey.pem'
                   sh 'chmod 400 mykey.pem'
           }
              }
@@ -35,13 +35,13 @@ stage('Creating Ansible config file') {
             sh '''
             cat <<EOF > /var/jenkins_home/.ssh/config
 host bastion
-   HostName `terraform output -raw pubEC2`
+   HostName `terraform -chdir=terraform/ output -raw pubEC2`
    User ubuntu
    identityFile /var/jenkins_home/workspace/Terraform/mykey.pem
    StrictHostKeyChecking=no
 
 host private_instance
-   HostName  `terraform output -raw privEC2`
+   HostName  `terraform -chdir=terraform/ output -raw privEC2`
    user  ubuntu
    ProxyCommand ssh bastion -W %h:%p
    identityFile /var/jenkins_home/workspace/Terraform/mykey.pem
@@ -73,10 +73,10 @@ EOF
           withCredentials([usernamePassword(credentialsId: 'ENV_VAR', usernameVariable: 'TF_VAR_db_User', passwordVariable: 'TF_VAR_db_Pass')]) {             
               sh '''
             cat <<EOF > ./.env
-RDS_HOSTNAME=`terraform output -raw rds_add `
-RDS_PORT=`terraform output -raw rds_port `
-REDIS_HOSTNAME=`terraform output -raw redis_add `
-REDIS_PORT=`terraform output -raw redis_port `
+RDS_HOSTNAME=`terraform -chdir=terraform/ output -raw rds_add `
+RDS_PORT=`terraform -chdir=terraform/ output -raw rds_port `
+REDIS_HOSTNAME=`terraform -chdir=terraform/ output -raw redis_add `
+REDIS_PORT=`terraform -chdir=terraform/ output -raw redis_port `
 '''
           }
              }
@@ -87,7 +87,7 @@ REDIS_PORT=`terraform output -raw redis_port `
             steps {
         withAWS(credentials: 'AWS_IAM_USER', region: 'us-west-2') { 
           withCredentials([usernamePassword(credentialsId: 'ENV_VAR', usernameVariable: 'TF_VAR_db_User', passwordVariable: 'TF_VAR_db_Pass')]) {             
-sh 'ansible-playbook -i inventory --private-key mykey.pem playbook.yml'
+sh 'ansible-playbook -i Ansible/inventory --private-key mykey.pem playbook.yml'
           }
              }
         }
@@ -96,7 +96,7 @@ sh 'ansible-playbook -i inventory --private-key mykey.pem playbook.yml'
             steps {
         withAWS(credentials: 'AWS_IAM_USER', region: 'us-west-2') { 
           withCredentials([usernamePassword(credentialsId: 'ENV_VAR', usernameVariable: 'TF_VAR_db_User', passwordVariable: 'TF_VAR_db_Pass')]) {             
-sh 'terraform output app_link'
+sh 'terraform -chdir=terraform/ output app_link'
           }
              }
         }
