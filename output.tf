@@ -32,6 +32,6 @@ output "redis_port" {
 
 
 output "app_link" {
-  value = aws_lb.NLB.public_ip
+  value = aws_lb.NLB.dns_name
 
 }
