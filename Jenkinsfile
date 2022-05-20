@@ -87,7 +87,7 @@ REDIS_PORT=`terraform -chdir=terraform/ output -raw redis_port `
             steps {
         withAWS(credentials: 'AWS_IAM_USER', region: 'us-west-2') { 
           withCredentials([usernamePassword(credentialsId: 'ENV_VAR', usernameVariable: 'TF_VAR_db_User', passwordVariable: 'TF_VAR_db_Pass')]) {             
-sh 'ansible-playbook -i Ansible/inventory --private-key mykey.pem Ansible/playbook.yml'
+sh 'ansible-playbook -i inventory --private-key mykey.pem Ansible/playbook.yml'
           }
              }
         }
