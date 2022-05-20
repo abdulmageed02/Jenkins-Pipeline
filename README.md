@@ -3,10 +3,11 @@
 ## Infrastructure
 infra structure is built on aws with terraform tool and it consists of:
 * 1 VPC
-* 4 subnets 2 public and 2 private
-* 2 natgateway in the public subnets
-* bastion host in the public subnet
-* EC2 instance in private subnet
+* 4 Subnets 2 Public and 2 Private
+* Internet Gateway
+* 2 Nat Gateway in the Public Subnets
+* Bastion host in the Public Subnet
+* EC2 instance in Private Subnet
 * Load balancer to expose the private instace 
 * RDS mysql
 * Redis
