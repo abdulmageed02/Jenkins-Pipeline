@@ -6,5 +6,5 @@ priv1_cidr = "10.0.3.0/24"
 priv2_cidr = "10.0.4.0/24"
 region     = "us-east-1"
 WS         = "dev" 
-AMI = "ami-0cb4e786f15603b0d"
+AMI = " ami-09d56f8956ab235b3"
 
