@@ -3,7 +3,7 @@ terraform {
     bucket         = "jenkinstaskpipeline"
     key            = "myfile.stfile"
     region         = "us-east-1"
-    dynamodb_table = "statfile"
+    dynamodb_table = "statelock"
     profile        = "default"
   }
 
