@@ -30,7 +30,7 @@ pipeline {
         }
 stage('Creating Ansible config file') {
             steps {
-        withAWS(credentials: 'AWS_IAM_USER', region: 'us-west-2') { 
+        withAWS(credentials: 'AWS_IAM_USER') { 
           withCredentials([usernamePassword(credentialsId: 'ENV_VAR', usernameVariable: 'TF_VAR_db_User', passwordVariable: 'TF_VAR_db_Pass')]) {             
             sh '''
             cat <<EOF > $HOME/.ssh/config
