@@ -23,7 +23,7 @@ pipeline {
           withCredentials([usernamePassword(credentialsId: 'ENV_VAR', usernameVariable: 'TF_VAR_db_User', passwordVariable: 'TF_VAR_db_Pass')]) {             
                 
                 
-                  sh 'terraform -chdir=terraform/ output -raw key > $HOME/mykey.pem'
+                  sh 'terraform -chdir=terraform/ output -raw key > mykey.pem'
                   sh 'chmod 400 $HOME/mykey.pem'
           }
              }
