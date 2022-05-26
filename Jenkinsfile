@@ -24,7 +24,8 @@ pipeline {
                 
                 
                   sh 'terraform -chdir=terraform/ output -raw key > mykey.pem'
-                  sh 'chmod 400 $HOME/mykey.pem'
+                  sh 'chmod 400 mykey.pem'
+                  sh 'pwd'
           }
              }
         }
