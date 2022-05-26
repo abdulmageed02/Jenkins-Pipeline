@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket         = "bu-jenkins-cket"
+    bucket         = "jenkinstaskpipeline"
     key            = "myfile.stfile"
-    region         = "us-west-2"
+    region         = "us-east-1"
     dynamodb_table = "statfile"
     profile        = "default"
   }
