@@ -10,7 +10,7 @@ pipeline {
             steps {
         withAWS(credentials: 'AWS_IAM_USER', region: 'us-west-2') { 
             // sh 'echo $HOME'
-          sh 'terraform -chdir=terraform/ init'
+          sh 'terraform -chdir=terraform/ init -reconfigure'
           withCredentials([usernamePassword(credentialsId: 'ENV_VAR', usernameVariable: 'TF_VAR_db_User', passwordVariable: 'TF_VAR_db_Pass')]) {
                             sh "terraform -chdir=terraform/ apply --var-file Dev.tfvars -auto-approve"
           }
