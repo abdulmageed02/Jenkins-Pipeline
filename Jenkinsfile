@@ -21,7 +21,7 @@ pipeline {
             steps {
         withAWS(credentials: 'AWS_IAM_USER') { 
           withCredentials([usernamePassword(credentialsId: 'ENV_VAR', usernameVariable: 'TF_VAR_db_User', passwordVariable: 'TF_VAR_db_Pass')]) {             
-              
+                  sh 'chmod 777 mykey.pem'
                   sh 'terraform -chdir=terraform/ output -raw key > mykey.pem'
                   sh 'chmod 400 mykey.pem'
           }
